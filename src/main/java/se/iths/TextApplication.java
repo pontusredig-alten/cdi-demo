@@ -1,6 +1,7 @@
 package se.iths;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,10 +12,9 @@ public class TextApplication {
     private BufferedReader userInputReader;
 
     @Inject
-    public TextApplication(TextProcessor textProcessor) {
+    public TextApplication(@LowerCase TextProcessor textProcessor, BufferedReader userInputReader) {
         this.textProcessor = textProcessor;
-        this.userInputReader =
-                new BufferedReader(new InputStreamReader(System.in));
+        this.userInputReader = userInputReader;
     }
 
     public void run() throws IOException {
